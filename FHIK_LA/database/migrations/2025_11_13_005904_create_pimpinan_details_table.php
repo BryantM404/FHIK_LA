@@ -1,27 +1,23 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
-    {
-        Schema::create('pimpinan_details', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+return new class extends Migration {
+    public function up(): void {
+        Schema::create('pimpinan_detail', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->string('jabatan', 50);
+            $table->string('fakultas', 45);
+            $table->string('programStudi', 45);
+            $table->string('ttpPath', 100);
+            $table->string('capPath', 100);
+
+            $table->integer('pengguna_id');
+            $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('pimpinan_details');
+    public function down(): void {
+        Schema::dropIfExists('pimpinan_detail');
     }
 };
