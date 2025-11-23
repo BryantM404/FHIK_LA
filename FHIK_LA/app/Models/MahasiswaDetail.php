@@ -9,6 +9,8 @@ class MahasiswaDetail extends Model
 {
     use HasFactory;
     protected $table = 'mahasiswa_detail';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = [
         'tempatTanggalLahir',
         'alamat',
@@ -27,6 +29,7 @@ class MahasiswaDetail extends Model
         'status',
         'pengguna_id'
     ];
+    public $timestamps = false;
 
     public function pengguna()
     {

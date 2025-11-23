@@ -9,7 +9,10 @@ class Role extends Model
 {
     use HasFactory;
     protected $table = 'role';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = ['nama'];
+    public $timestamps = false;
 
     public function pengguna()
     {

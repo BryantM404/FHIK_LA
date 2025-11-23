@@ -9,6 +9,8 @@ class LogPengguna extends Model
 {
     use HasFactory;
     protected $table = 'log_pengguna';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = ['aktivitas', 'created_at', 'pengguna_id'];
     public $timestamps = false;
 

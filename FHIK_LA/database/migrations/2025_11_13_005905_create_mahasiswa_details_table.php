@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void {
         Schema::create('mahasiswa_detail', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('tempatTanggalLahir', 100);
             $table->string('alamat', 100);
             $table->string('kota', 50);
@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->string('kotaOrangTua', 50);
             $table->string('status', 15);
 
-            $table->integer('pengguna_id');
+            $table->unsignedBigInteger('pengguna_id');
             $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');
         });
     }

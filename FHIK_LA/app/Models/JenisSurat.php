@@ -9,7 +9,10 @@ class JenisSurat extends Model
 {
     use HasFactory;
     protected $table = 'jenis_surat';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = ['nama'];
+    public $timestamps = false;
 
     public function pengajuan()
     {

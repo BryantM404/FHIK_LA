@@ -9,13 +9,17 @@ class SuratSPTA extends Model
 {
     use HasFactory;
     protected $table = 'SuratSPTA';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = [
         'judulTugas',
         'tempatPenelitian',
         'alamatPenelitian',
         'mataKuliah',
+        'dosenMataKuliah',
         'pengajuan_id'
     ];
+    public $timestamps = false;
 
     public function pengajuan()
     {

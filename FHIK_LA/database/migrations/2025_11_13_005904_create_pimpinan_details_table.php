@@ -6,14 +6,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void {
         Schema::create('pimpinan_detail', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('jabatan', 50);
             $table->string('fakultas', 45);
             $table->string('programStudi', 45);
             $table->string('ttpPath', 100);
             $table->string('capPath', 100);
 
-            $table->integer('pengguna_id');
+            $table->unsignedBigInteger('pengguna_id');
             $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');
         });
     }

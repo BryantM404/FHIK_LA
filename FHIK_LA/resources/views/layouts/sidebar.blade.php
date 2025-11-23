@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Dashboard</span>
         </a>
@@ -28,9 +28,9 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">SKMA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">SSKP</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">SSPTA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSKMA') }}">SKMA</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSKP') }}">SSKP</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSPTA') }}">SSPTA</a></li>
                 </ul>
             </div>
             </li>
@@ -72,13 +72,13 @@
         {{-- Role Mahasiswa --}}
         @if(Auth::user()->role_id == 4)
             <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="{{ route('mahasiswaPengajuan') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Pengajuan Surat</span>
             </a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="{{ route('mahasiswaHistori') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Histori Pengajuan</span>
             </a>

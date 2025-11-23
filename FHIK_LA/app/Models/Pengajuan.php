@@ -9,18 +9,20 @@ class Pengajuan extends Model
 {
     use HasFactory;
     protected $table = 'pengajuan';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = [
         'noSurat',
         'alasanPenolakan',
         'dokumenPath',
         'tanggalPengajuan',
         'tanggalDisetujui',
-        'divalidasiOleh',
-        'disetujuiOleh',
+        'koordinator_id',
         'pengguna_id',
         'jenisSurat_id',
         'status_id'
     ];
+    public $timestamps = false;
 
     public function pengguna()
     {

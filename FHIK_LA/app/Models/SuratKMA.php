@@ -9,6 +9,8 @@ class SuratKMA extends Model
 {
     use HasFactory;
     protected $table = 'SuratKMA';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = [
         'tahunAkademik',
         'instansi',
@@ -16,6 +18,8 @@ class SuratKMA extends Model
         'jabatan',
         'pengajuan_id'
     ];
+    public $timestamps = false;
+
 
     public function pengajuan()
     {

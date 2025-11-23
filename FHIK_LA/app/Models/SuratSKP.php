@@ -9,7 +9,15 @@ class SuratSKP extends Model
 {
     use HasFactory;
     protected $table = 'SuratSKP';
-    protected $fillable = ['tempatPenelitian', 'alamatPenelitian', 'pengajuan_id'];
+    protected $primaryKey = 'id';
+    public $incrementing = true;
+    protected $fillable = [
+        'tempatPenelitian', 
+        'alamatPenelitian', 
+        'pengajuan_id'
+    ];
+    public $timestamps = false;
+
 
     public function pengajuan()
     {

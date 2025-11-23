@@ -6,11 +6,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void {
         Schema::create('log_pengguna', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('aktivitas', 100);
             $table->timestamp('created_at')->nullable();
 
-            $table->integer('pengguna_id');
+            $table->unsignedBigInteger('pengguna_id');
             $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');
         });
     }

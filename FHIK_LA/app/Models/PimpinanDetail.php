@@ -9,6 +9,8 @@ class PimpinanDetail extends Model
 {
     use HasFactory;
     protected $table = 'pimpinan_detail';
+    protected $primaryKey = 'id';
+    public $incrementing = true;
     protected $fillable = [
         'jabatan',
         'fakultas',
@@ -17,6 +19,7 @@ class PimpinanDetail extends Model
         'capPath',
         'pengguna_id'
     ];
+    public $timestamps = false;
 
     public function pengguna()
     {
