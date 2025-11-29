@@ -8,10 +8,9 @@ return new class extends Migration {
         Schema::create('pimpinan_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->string('jabatan', 50);
-            $table->string('fakultas', 45);
-            $table->string('programStudi', 45);
-            $table->string('ttpPath', 100);
-            $table->string('capPath', 100);
+            $table->string('fakultas', 45)->nullable();
+            $table->string('ttdPath', 100);
+            $table->string('capPath', 100)->nullable();
 
             $table->unsignedBigInteger('pengguna_id');
             $table->foreign('pengguna_id')->references('id')->on('pengguna')->onDelete('cascade');

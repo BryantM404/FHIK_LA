@@ -7,8 +7,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('SuratSKP', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tempatPenelitian', 50);
-            $table->string('alamatPenelitian', 100);
+            $table->string('tempatKP', 50);
+            $table->string('alamatKP', 100);
 
             $table->unsignedInteger('pengajuan_id');
             $table->foreign('pengajuan_id')->references('id')->on('pengajuan')->onDelete('cascade');

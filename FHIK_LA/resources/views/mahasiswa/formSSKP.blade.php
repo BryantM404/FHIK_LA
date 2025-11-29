@@ -25,12 +25,12 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="tempatPenelitian">Tempat Penelitian</label>
-                            <input type="text" class="form-control" id="tempatPenelitian" name="tempatPenelitian" required>
+                            <label for="tempatKP">Tempat Kerja Praktik</label>
+                            <input type="text" class="form-control" id="tempatKP" name="tempatKP" required>
                         </div>
                         <div class="form-group">
-                            <label for="alamatPenelitian">Alamat Penelitian</label>
-                            <input type="text" class="form-control" id="alamatPenelitian" name="alamatPenelitian" required>
+                            <label for="alamatKP">Alamat Kerja Praktik</label>
+                            <input type="text" class="form-control" id="alamatKP" name="alamatKP" required>
                         </div>
                         
                         <button type="submit" class="btn btn-primary mr-2">Submit</button>

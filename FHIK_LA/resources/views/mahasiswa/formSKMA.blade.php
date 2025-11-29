@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="programStudi">Program Studi</label>
                             <select class="form-control" id="programStudi" name="programStudi" required>
-                                <option value="{{ Auth::user()->mahasiswaDetail->programStudi }}">{{ Auth::user()->mahasiswaDetail->programStudi }}</option>
+                                <option value="{{ Auth::user()->programStudi }}">{{ Auth::user()->programStudi }}</option>
                                 <option value="63 - Desain Interior">63 - Desain Interior</option>
                                 <option value="64 - Desain Komunikasi Visual">64 - Desain Komunikasi Visual</option>
                             </select>

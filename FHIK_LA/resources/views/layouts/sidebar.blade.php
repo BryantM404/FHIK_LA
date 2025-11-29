@@ -8,7 +8,7 @@
         </li>
 
         
-        {{-- Role Admin --}}
+        {{-- Sidebar Admin --}}
         @if(Auth::user()->role_id == 1)
             <li class="nav-item">
             <a class="nav-link" href="pages/documentation/documentation.html">
@@ -16,10 +16,10 @@
                 <span class="menu-title">Data Mahasiswa</span>
             </a>
             </li>
-        @endif
+        
 
-        {{-- Role Operator --}}
-        @if(Auth::user()->role_id == 2)
+        {{-- Sidebar Operator --}}
+        @elseif(Auth::user()->role_id == 2)
             <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-layout menu-icon"></i>
@@ -35,15 +35,15 @@
             </div>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
+            <a class="nav-link" href="{{ route('arsip') }}">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Arsip</span>
             </a>
             </li>
-        @endif
+        
 
-        {{-- Role Pimpinan --}}
-        @if(Auth::user()->role_id == 3)
+        {{-- Sidebar Pimpinan --}}
+        @elseif(Auth::user()->role_id == 3)
             <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <i class="icon-layout menu-icon"></i>
@@ -67,10 +67,10 @@
                 </ul>
             </div>
             </li>
-        @endif
+        
 
-        {{-- Role Mahasiswa --}}
-        @if(Auth::user()->role_id == 4)
+        {{-- Sidebar Mahasiswa --}}
+        @elseif(Auth::user()->role_id == 4)
             <li class="nav-item">
             <a class="nav-link" href="{{ route('mahasiswaPengajuan') }}">
                 <i class="icon-paper menu-icon"></i>

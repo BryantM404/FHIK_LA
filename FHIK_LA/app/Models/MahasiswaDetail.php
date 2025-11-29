@@ -17,7 +17,6 @@ class MahasiswaDetail extends Model
         'kota',
         'provinsi',
         'kodePos',
-        'programStudi',
         'email',
         'noHandphone',
         'telpon',

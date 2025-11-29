@@ -14,7 +14,6 @@ class PimpinanDetail extends Model
     protected $fillable = [
         'jabatan',
         'fakultas',
-        'programStudi',
         'ttdPath',
         'capPath',
         'pengguna_id'

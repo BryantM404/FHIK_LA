@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id')->primary();
             $table->string('nama', 100);
             $table->string('password', 100);
+            $table->string('programStudi', 45)->nullable();
             $table->unsignedInteger('role_id');
             $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
 

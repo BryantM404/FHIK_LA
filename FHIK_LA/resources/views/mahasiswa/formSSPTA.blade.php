@@ -25,7 +25,7 @@
                             <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="judulTugas">Judul Tugas</label>
+                            <label for="judulTugas">Judul Tugas Akhir</label>
                             <input type="text" class="form-control" id="judulTugas" name="judulTugas" required>
                         </div>
                         <div class="form-group">

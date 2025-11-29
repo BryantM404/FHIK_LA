@@ -7,7 +7,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <p class="card-title">Surat Survey Penelitian Tugas AKhir</p>
+                <p class="card-title">Surat Survei Penelitian Tugas Akhir</p>
                 <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -15,50 +15,123 @@
                         <thead>
                             <tr>
                             <th>No</th>
-                            <th>Jenis Surat</th>
+                            <th>NRP</th>
+                            <th>Nama</th>
                             <th>Status Pengajuan</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                             @php($no = 1)
+                            @php($ada = false)
                             @foreach($pengajuans as $pengajuan)
-                                @if($pengajuan->pengguna->id == Auth::user()->id)
+                                @if($pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id == 3 && $pengajuan->status_id == 1)
+                                    @php($ada = true)
                                     <tr>
                                         <td>
                                             {{ $no++ }}
                                         </td>
-                                        
                                         <td>
-                                            {{ $pengajuan->jenisSurat->nama }}
+                                            {{ $pengajuan->pengguna->id }}
+                                        </td>
+                                        <td>
+                                            {{ $pengajuan->pengguna->nama }}
                                         </td>
                                         <td>
                                             {{ $pengajuan->status->nama }}
                                         </td>
                                         <td>
-                                            @if($pengajuan->status_id == 1)
-                                                <a class="btn btn-primary btn-icon-text" href="{{ route('dashboard') }}">
-                                                    <i class="ti-file btn-icon-prepend"></i>
-                                                    Lihat Data
-                                                </a>
-                                            @elseif($pengajuan->status_id == 2)
-                                                Tidak ada aksi yang bisa dilakukan
-                                            @elseif($pengajuan->status_id == 3)
-                                                <a class="btn btn-success btn-icon-text" href="{{ route('dashboard') }}">
-                                                    <i class="ti-file btn-icon-prepend"></i>
-                                                    Lihat Surat
-                                                </a>
-                                            @elseif($pengajuan->status_id == 4)
-                                                <a class="btn btn-danger btn-icon-text" href="{{ route('dashboard') }}">
-                                                    <i class="ti-file btn-icon-prepend"></i>
-                                                    Lihat Alasan Penolakan
-                                                </a>
-                                            @endif
+                                            <!-- Button Lihat -->
+                                            <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#lihat{{ $pengajuan->id }}">
+                                                <i class="ti-file btn-icon-prepend"></i>
+                                                Lihat Data
+                                            </a>
+                                            <!-- Modal Lihat -->
+                                            <div class="modal fade" id="lihat{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Lihat Surat</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Nama: {{ $pengajuan->pengguna->nama }}</p>
+                                                    <p>NRP: {{ $pengajuan->pengguna->id }}</p>
+                                                    <p>Email: {{ $pengajuan->pengguna->mahasiswaDetail->email }}</p>
+                                                    <p>Judul Tugas Akhir: {{ $pengajuan->suratSPTA->judulTugas }}</p>
+                                                    <p>Tempat Penelitian: {{ $pengajuan->suratSPTA->tempatPenelitian }}</p>
+                                                    <p>Alamat Penelitian: {{ $pengajuan->suratSPTA->alamatPenelitian }}</p>
+                                                    <p>Mata Kuliah: {{ $pengajuan->suratSPTA->mataKuliah }}</p>
+                                                    <p>Dosen Mata Kuliah: {{ $pengajuan->suratSPTA->dosenMataKuliah }}</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <!-- Button Verifikasi -->
+                                            <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#verifikasi{{ $pengajuan->id }}">
+                                                <i class="ti-file btn-icon-prepend"></i>
+                                                Verifikasi
+                                            </a>
+                                            <!-- Modal Verifikasi -->
+                                            <div class="modal fade" id="verifikasi{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Verifikasi Surat</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ingin memverifikasi surat ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                    <a class="btn btn-success" href="{{ route('verifikasiSurat', ['pengajuan' => $pengajuan->id]) }}">Yakin</a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <!-- Button Tolak -->
+                                            <a class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#tolak{{ $pengajuan->id }}">
+                                                <i class="ti-file btn-icon-prepend"></i>
+                                                Tolak
+                                            </a>
+                                            <!-- Modal Tolak -->
+                                            <div class="modal fade" id="tolak{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tolak Surat</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ingin menolak surat ini?
+                                                    <form method="GET" action="{{ route('tolakSurat', ['pengajuan' => $pengajuan->id]) }}">
+                                                        @csrf
+                                                        <textarea name="alasanPenolakan" id="alasanPenolakan" cols="47" rows="8" style="border: 1px solid grey;" placeholder="Kesalahan input data" required></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-success">Yakin</button>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
                                         </td>
-                                    
                                     </tr>
                                 @endif
-                            @endforeach
+                                @endforeach
+                            @if($ada == false)
+                                <tr>
+                                    <td>Tidak ada data yang ditampilkan</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                     </div>

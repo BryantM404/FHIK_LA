@@ -12,8 +12,8 @@ class SuratSKP extends Model
     protected $primaryKey = 'id';
     public $incrementing = true;
     protected $fillable = [
-        'tempatPenelitian', 
-        'alamatPenelitian', 
+        'tempatKP', 
+        'alamatKP', 
         'pengajuan_id'
     ];
     public $timestamps = false;

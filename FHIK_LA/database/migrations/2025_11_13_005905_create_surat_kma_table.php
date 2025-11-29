@@ -8,9 +8,9 @@ return new class extends Migration {
         Schema::create('SuratKMA', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tahunAkademik', 20);
-            $table->string('instansi', 50);
-            $table->string('pangkatGolongan', 50);
-            $table->string('jabatan', 30);
+            $table->string('instansi', 50)->nullable();
+            $table->string('pangkatGolongan', 50)->nullable();
+            $table->string('jabatan', 30)->nullable();
 
             $table->unsignedInteger('pengajuan_id');
             $table->foreign('pengajuan_id')->references('id')->on('pengajuan')->onDelete('cascade');

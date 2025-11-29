@@ -31,6 +31,9 @@ Route::get('/mahasiswa/histori', [MahasiswaController::class, 'histori'])->name(
 Route::get('/operator/verifikasi-SKMA', [OperatorController::class, 'verifikasiSKMA'])->name('verifikasiSKMA');
 Route::get('/operator/verifikasi-SSKP', [OperatorController::class, 'verifikasiSSKP'])->name('verifikasiSSKP');
 Route::get('/operator/verifikasi-SSPTA', [OperatorController::class, 'verifikasiSSPTA'])->name('verifikasiSSPTA');
+Route::get('/operator/verifikasi-surat/{pengajuan}', [OperatorController::class, 'verifikasiSurat'])->name('verifikasiSurat');
+Route::get('/operator/tolak-surat/{pengajuan}', [OperatorController::class, 'tolakSurat'])->name('tolakSurat');
+Route::get('/operator/arsip', [OperatorController::class, 'arsip'])->name('arsip');
 
 
 

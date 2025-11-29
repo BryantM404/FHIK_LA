@@ -13,7 +13,7 @@ class Pengguna extends Authenticatable
     protected $primaryKey = 'id';
     protected $keyType = 'int';
     public $incrementing = false;
-    protected $fillable = ['id', 'nama', 'password', 'role_id'];
+    protected $fillable = ['id', 'nama', 'password', 'programStudi', 'role_id'];
     public $timestamps = false;
 
     protected $hidden = [

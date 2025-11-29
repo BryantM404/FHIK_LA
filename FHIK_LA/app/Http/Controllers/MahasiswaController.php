@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MahasiswaDetail;
 use App\Models\Pengajuan;
+use App\Models\Pengguna;
 use App\Models\SuratKMA;
 use App\Models\SuratSKP;
 use App\Models\SuratSPTA;
@@ -67,15 +68,22 @@ class MahasiswaController extends Controller
                 'status_id' => 1,
             ]);
 
+            Pengguna::updateOrCreate(
+                ['id' => $userId],
+                [
+                'programStudi' => $validated['programStudi'],
+                ]
+            );
+
             MahasiswaDetail::updateOrCreate(
                 ['pengguna_id' => $userId],
                 [
                     'tempatTanggalLahir' => $validated['tempatTanggalLahir'],
                     'alamat' => $validated['alamat'],
-                    'programStudi' => $validated['programStudi'],
                     'namaWali' => $validated['namaWali'],
                     'alamatOrangTua' => $validated['alamatOrangTua'],
                     'pekerjaanOrangTua' => $validated['pekerjaanOrangTua'],
+                    'status' => 'A'
                 ]
             );
 
@@ -94,7 +102,7 @@ class MahasiswaController extends Controller
             ]);
         });
 
-        return redirect()->route('dashboard');
+        return redirect()->route('mahasiswaHistori');
     }
 
 
@@ -102,8 +110,8 @@ class MahasiswaController extends Controller
     {
         $validated = $request->validate([
             'email' => 'required|string|max:150',
-            'tempatPenelitian' => 'required|string|max:50',
-            'alamatPenelitian' => 'required|string|max:100',
+            'tempatKP' => 'required|string|max:50',
+            'alamatKP' => 'required|string|max:100',
         ]);
 
         DB::transaction(function () use ($validated) {
@@ -125,8 +133,8 @@ class MahasiswaController extends Controller
             );
 
             SuratSKP::create([
-                'tempatPenelitian' => $validated['tempatPenelitian'],
-                'alamatPenelitian' => $validated['alamatPenelitian'],
+                'tempatKP' => $validated['tempatKP'],
+                'alamatKP' => $validated['alamatKP'],
                 'pengajuan_id' => $pengajuan->id,
             ]);
 
@@ -137,7 +145,7 @@ class MahasiswaController extends Controller
             ]);
         });
 
-        return redirect()->route('dashboard');
+        return redirect()->route('mahasiswaHistori');
     }
 
     public function storeSSPTA(Request $request)
@@ -185,7 +193,7 @@ class MahasiswaController extends Controller
             ]);
         });
 
-        return redirect()->route('dashboard');
+        return redirect()->route('mahasiswaHistori');
     }
 
 
