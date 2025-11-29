@@ -30,6 +30,11 @@
         .nomor {
             text-align: left;
             margin-top: 2px;
+        }
+
+        .perihal {
+            text-align: left;
+            margin-top: 2px;
             margin-bottom: 25px;
         }
 
@@ -64,37 +69,15 @@
     <div class="nomor">No: {{ $nomorSurat }}</div>
     <div class="perihal">Perihal: Permohonan Izin Penelitian</div>
 
-    <p style="margin-top:-10px">Yang bertandatangan di bawah ini :</p>
+    <b>Yth. Bapak/Ibu Pimpinan</b> <br>
+    <b>{{ $suratSPTA['tempatPenelitian'] }}</b> <br>
+    <b>{{ $suratSPTA['alamatPenelitian'] }}</b>
+    
+    <p>Dengan Hormat,</p>
+    <p>Bersama surat ini mahasiswa Program Studi Desain Interior Fakultas Humaniora dan Industri Kreatif, Universitas Kristen Maranatha yang beridentitas:</p>
 
-    <table class="data-table">
-        <tr>
-            <td>Nama</td>
-            <td>:</td>
-            <td>{{ $pimpinan1->pengguna->nama }}</td>
-        </tr>
-        <tr>
-            <td>N I K</td>
-            <td>:</td>
-            <td>{{ $pimpinan1->pengguna->id }}</td>
-        </tr>
 
-        <tr>
-            <td>Jabatan</td>
-            <td>:</td>
-            <td rowspan="2">
-                {{ $pimpinan1['jabatan'] }} {{ $pimpinan1['fakultas'] }}<br>
-                Universitas Kristen Maranatha
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-
-    <p>Dengan ini menyatakan dengan sesungguhnya, bahwa :</p>
-
-    <table class="data-table">
+    <table class="data-table" style="margin-left:30px">
         <tr>
             <td>Nama</td>
             <td>:</td>
@@ -106,79 +89,68 @@
             <td>{{ $pengguna['id'] }}</td>
         </tr>
         <tr>
-            <td>Tempat / Tanggal Lahir</td>
+            <td>Email</td>
             <td>:</td>
-            <td>{{ $mahasiswaDetail['tempatTanggalLahir'] }}</td>
+            <td>{{ $mahasiswaDetail['email'] }}</td>
+        </tr>
+        <tr>
+            <td>Judul Tugas</td>
+            <td>:</td>
+            <td>{{ $suratSPTA['judulTugas'] }}</td>
+        </tr>
+        <tr>
+            <td>Dosen Mata Kuliah</td>
+            <td>:</td>
+            <td>{{ $suratSPTA['dosenMataKuliah'] }}</td>
+        </tr>
+
+    </table>
+
+    <p>Akan Melakukan Pengumpulan data penelitian di :</p>
+
+    <table class="data-table" style="margin-left:30px">
+        <tr>
+            <td>Tempat Penelitian</td>
+            <td>:</td>
+            <td>{{ $suratSPTA['tempatPenelitian'] }}</td>
         </tr>
         <tr>
             <td>Alamat</td>
             <td>:</td>
-            <td>{{ $mahasiswaDetail['alamat'] }}</td>
+            <td>{{ $suratSPTA['alamatPenelitian'] }}</td>
         </tr>
     </table>
 
-    <p>yang bersangkutan adalah benar mahasiswa kami pada :</p>
 
-    <table class="data-table">
-        <tr>
-            <td>Program Studi</td>
-            <td>:</td>
-            <td>{{ $pengguna['programStudi'] }}</td>
-        </tr>
-        <tr>
-            <td>Tahun Akademik</td>
-            <td>:</td>
-            <td>{{ $suratKMA['tahunAkademik'] }}</td>
-        </tr>
-    </table>
-
-    <p>Dan benar bahwa orang tua / wali mahasiswa tersebut adalah :</p>
-
-    <table class="data-table">
-        <tr>
-            <td>N a m a</td>
-            <td>:</td>
-            <td>{{ $mahasiswaDetail['namaWali'] }}</td>
-        </tr>
-        <tr>
-            <td>Alamat</td>
-            <td>:</td>
-            <td>{{ $mahasiswaDetail['alamatOrangTua'] }}</td>
-        </tr>
-        <tr>
-            <td>Pekerjaan</td>
-            <td>:</td>
-            <td>{{ $mahasiswaDetail['pekerjaanOrangTua'] }}</td>
-        </tr>
-        <tr>
-            <td>Instansi</td>
-            <td>:</td>
-            <td>{{ $suratKMA['instansi'] ?: '-' }}</td>
-        </tr>
-        <tr>
-            <td>Pangkat/Golongan</td>
-            <td>:</td>
-            <td>{{ $suratKMA['pangkatGolongan'] ?: '- / -' }}</td>
-        </tr>
-        <tr>
-            <td>Jabatan</td>
-            <td>:</td>
-            <td>{{ $suratKMA['jabatan'] ?: '-' }}</td>
-        </tr>
-    </table>
-
-    <p class="content">
-        Demikian Surat Keterangan ini kami buat untuk dapat dipergunakan sebagaimana mestinya.
-        Atas perhatian dan kerjasama saudara kami ucapkan terimakasih.
+    <p>Mengajukan Permohonan izin untuk melakukan penelitian kiranya Bapak/Ibu dapat membantu mahasiswa kami dengan memberi izin untuk memfoto
+        , meminta data dan meminta denah di Instansi yang Bapak/Ibu pimpin guna menyelesaikan tugas mata kuliah {{ $suratSPTA['mataKuliah'] }}.
+        Maka kami mohon perhatian serta bantuan sepenuhnya dari Bapak/Ibu, demi kelancaran tugas mahasiswa yang bersangkutan.
     </p>
 
-    <div class="ttd">
-        Bandung, <br><br><br><br>
+    <p class="content">
+        Demikian Surat Keterangan ini kami sampaikan. Atas perhatian dan kerjasama Bapak/Ibu, kami ucapkan terimakasih.
+    </p>
 
-        <u>{{ $pimpinan1->pengguna->nama }}</u><br>
-        {{ $pimpinan1['jabatan'] }} {{ $pimpinan1['fakultas'] }}<br>
-        Universitas Kristen Maranatha
-    </div>
+    <table width="100%" style="margin-top:30px;">
+        <tr>
+            <td width="50%" style="text-align:left; vertical-align:top;">
+                Mengetahui, <br>
+                Ketua Prodi. Desain Interior <br>
+                {{ $pimpinan1['fakultas'] }} <br>
+                Universitas Kristen Maranatha <br><br><br><br><br>
+
+                <u>{{ $pimpinan1->pengguna->nama }}</u><br>
+            </td>
+            <td width="50%" style="text-align:left; vertical-align:top;">
+                Bandung, <br>
+                Koordinator Tugas Akhir <br>
+                Program Studi Desain Interior <br><br><br><br><br>
+
+                <u>{{ $pimpinan2->pengguna->nama }}</u><br>
+            </td>
+        </tr>
+    </table>
+
 
 </body>
 </html>

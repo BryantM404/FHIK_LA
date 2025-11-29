@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\OperatorController;
+use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,9 @@ Route::get('/operator/verifikasi-surat/{pengajuan}', [OperatorController::class,
 Route::get('/operator/tolak-surat/{pengajuan}', [OperatorController::class, 'tolakSurat'])->name('tolakSurat');
 Route::get('/operator/arsip', [OperatorController::class, 'arsip'])->name('arsip');
 
+Route::get('/pimpinan/validasi-SKMA', [PimpinanController::class, 'validasiSKMA'])->name('validasiSKMA');
+Route::get('/pimpinan/validasi-SSKP', [PimpinanController::class, 'validasiSSKP'])->name('validasiSSKP');
+Route::get('/pimpinan/validasi-SSPTA', [PimpinanController::class, 'validasiSSPTA'])->name('validasiSSPTA');
 
 
 Route::middleware('auth')->group(function () {

@@ -28,9 +28,12 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSKMA') }}">SKMA</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSKP') }}">SSKP</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSPTA') }}">SSPTA</a></li>
+                    @if(Auth::user()->programStudi == NULL)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSKMA') }}">SKMA</a></li>
+                    @else
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSKP') }}">SSKP</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('verifikasiSSPTA') }}">SSPTA</a></li>
+                    @endif
                 </ul>
             </div>
             </li>
@@ -54,15 +57,15 @@
                 <ul class="nav flex-column sub-menu">
                     {{-- Dekan --}}
                     @if(Auth::user()->pimpinanDetail->jabatan == "Dekan")
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">SKMA</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSKMA') }}">SKMA</a></li>
                     @endif
                     {{-- Kaprodi & Koordinator KP --}}
-                    @if(Auth::user()->pimpinanDetail->jabatan == "Kaprodi" || Auth::user()->pimpinanDetail->jabatan == "Koordinator KP")
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">SSKP</a></li>
+                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0|| strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator KP') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSKP') }}">SSKP</a></li>
                     @endif
                     {{-- Kaprodi & Koordinator TA --}}
-                    @if(Auth::user()->pimpinanDetail->jabatan == "Kaprodi" || Auth::user()->pimpinanDetail->jabatan == "Koordinator TA")
-                        <li class="nav-item"> <a class="nav-link" href="pages/ui-features/dropdowns.html">SSPTA</a></li>
+                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0|| strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator TA') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSPTA') }}">SSPTA</a></li>
                     @endif
                 </ul>
             </div>
