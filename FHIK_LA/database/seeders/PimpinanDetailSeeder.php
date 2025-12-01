@@ -18,7 +18,7 @@ class PimpinanDetailSeeder extends Seeder
                 'id' => 1,
                 'jabatan' => 'Dekan',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_410048.png',
                 'capPath' => '',
                 'pengguna_id' => 410048
             ],
@@ -26,7 +26,7 @@ class PimpinanDetailSeeder extends Seeder
                 'id' => 2,
                 'jabatan' => 'Kaprodi Desain Interior',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_630040.png',
                 'capPath' => '',
                 'pengguna_id' => 630040
             ],
@@ -34,21 +34,21 @@ class PimpinanDetailSeeder extends Seeder
                 'id' => 3,
                 'jabatan' => 'Koordinator TA - D.Interior',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_630057.png',
                 'pengguna_id' => 630057
             ],
             [
                 'id' => 4,
                 'jabatan' => 'Koordinator KP - D.Interior',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_630007.png',
                 'pengguna_id' => 630007
             ],
             [
                 'id' => 5,
                 'jabatan' => 'Kaprodi Desain Komunikasi Visual',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_640079.png',
                 'capPath' => '',
                 'pengguna_id' => 640079
             ],
@@ -56,14 +56,14 @@ class PimpinanDetailSeeder extends Seeder
                 'id' => 6,
                 'jabatan' => 'Koordinator TA - DKV',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_640076.png',
                 'pengguna_id' => 640076
             ],
             [
                 'id' => 7,
                 'jabatan' => 'Koordinator KP - DKV',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
-                'ttdPath' => 'hehe',
+                'ttdPath' => 'storage/material/ttd/TTD_640003.png',
                 'pengguna_id' => 640003
             ],
             

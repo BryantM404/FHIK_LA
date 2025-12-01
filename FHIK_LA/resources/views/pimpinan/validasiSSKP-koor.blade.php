@@ -7,7 +7,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <p class="card-title">Arsip Surat</p>
+                <p class="card-title">Surat Survei Kerja Praktik</p>
                 <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -17,7 +17,7 @@
                             <th>No</th>
                             <th>NRP</th>
                             <th>Nama</th>
-                            <th>Jenis Surat</th>
+                            <th>Status Pengajuan</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -25,7 +25,7 @@
                             @php($no = 1)
                             @php($ada = false)
                             @foreach($pengajuans as $pengajuan)
-                                @if($pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->status_id == 3)
+                                @if($pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id == 2 && $pengajuan->status_id == 2 && $pengajuan->koordinator_id == NULL)
                                     @php($ada = true)
                                     <tr>
                                         <td>
@@ -38,7 +38,7 @@
                                             {{ $pengajuan->pengguna->nama }}
                                         </td>
                                         <td>
-                                            {{ $pengajuan->jenisSurat->nama }}
+                                            {{ $pengajuan->status->nama }}
                                         </td>
                                         <td>
                                             <!-- Button Surat -->
@@ -72,6 +72,59 @@
                                                 </div>
                                             </div>
                                             </div>
+
+                                            <!-- Button Validasi -->
+                                            <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#validasi{{ $pengajuan->id }}">
+                                                <i class="ti-check btn-icon-prepend"></i>
+                                                Validasi
+                                            </a>
+                                            <!-- Modal Validasi -->
+                                            <div class="modal fade" id="validasi{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Validasi Surat</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ingin memvalidasi surat ini?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                    <a class="btn btn-success" href="{{ route('validasiSurat', ['pengajuan' => $pengajuan->id]) }}">Yakin</a>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                            <!-- Button Tolak -->
+                                            <a class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#tolak{{ $pengajuan->id }}">
+                                                <i class="ti-trash btn-icon-prepend"></i>
+                                                Tolak
+                                            </a>
+                                            <!-- Modal Tolak -->
+                                            <div class="modal fade" id="tolak{{ $pengajuan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tolak Surat</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Apakah anda yakin ingin menolak surat ini?
+                                                    <form method="GET" action="{{ route('tolakSuratPimpinan', ['pengajuan' => $pengajuan->id]) }}">
+                                                        @csrf
+                                                        <textarea name="alasanPenolakan" id="alasanPenolakan" cols="47" rows="8" style="border: 1px solid grey;" placeholder="Kesalahan input data" required></textarea>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-success">Yakin</button>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
                                         </td>
                                     </tr>
                                 @endif

@@ -38,7 +38,7 @@
             margin-top: -10px;
         }
         table.data-table td:first-child {
-            width: 160px;     
+            width: 190px;     
         }
         table.data-table td:nth-child(2) {
             width: 10px;
@@ -62,13 +62,13 @@
     </div>
 
     <div class="judul">SURAT KETERANGAN MAHASISWA</div>
-    <div class="nomor">No: {{ $nomorSurat }}</div>
+    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
 
     <p style="margin-top:-10px">Yang bertandatangan di bawah ini :</p>
 
     <table class="data-table">
         <tr>
-            <td>Nama</td>
+            <td>N a m a</td>
             <td>:</td>
             <td>{{ $pimpinan1->pengguna->nama }}</td>
         </tr>
@@ -96,12 +96,12 @@
 
     <table class="data-table">
         <tr>
-            <td>Nama</td>
+            <td>N a m a</td>
             <td>:</td>
             <td>{{ $pengguna['nama'] }}</td>
         </tr>
         <tr>
-            <td>NRP</td>
+            <td>N R P</td>
             <td>:</td>
             <td>{{ $pengguna['id'] }}</td>
         </tr>
@@ -173,8 +173,8 @@
     </p>
 
     <div class="ttd">
-        Bandung, <br><br><br><br>
-
+        Bandung, {{ $tanggalDisetujui }}<br>
+        <img src="{{ public_path($pimpinan1['ttdPath']) }}" alt="TTD" style="width:180px;"><br>
         <u>{{ $pimpinan1->pengguna->nama }}</u><br>
         {{ $pimpinan1['jabatan'] }} {{ $pimpinan1['fakultas'] }}<br>
         Universitas Kristen Maranatha

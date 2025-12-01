@@ -71,8 +71,8 @@
     <div class="lampiran">Lampiran: -</div>
 
     <b>Yth. Bapak/Ibu Pimpinan</b> <br>
-    <b>{{ $suratSPTA['tempatPenelitian'] }}</b> <br>
-    <b>{{ $suratSPTA['alamatPenelitian'] }}</b>
+    <b>{{ $suratSKP['tempatKP'] }}</b> <br>
+    <b>{{ $suratSKP['alamatKP'] }}</b>
     
     <p>Dengan Hormat,</p>
     <p>Sesuai dengan kurikulum Merdeka Belajar Kampus Merdeka yang berlaku saat ini pada Program Sarjana Desain Interior Fakultas Humaniora dan Industri Kreatif

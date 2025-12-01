@@ -19,7 +19,7 @@ class MahasiswaDetail extends Model
         'kodePos',
         'email',
         'noHandphone',
-        'telpon',
+        'telepon',
         'namaWali',
         'namaIbuKandung',
         'pekerjaanOrangTua',

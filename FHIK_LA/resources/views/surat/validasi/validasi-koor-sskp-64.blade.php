@@ -35,7 +35,7 @@
         .perihal {
             text-align: left;
             margin-top: 2px;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
 
         table.data-table {
@@ -66,59 +66,51 @@
         <img src="{{ public_path('storage/material/kop/Kop Surat DI.png') }}">
     </div>
 
-    <div class="nomor">No: {{ $nomorSurat }}</div>
+    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
     <div class="lampiran">Lampiran: -</div>
-    <div class="perihal">Perihal: Surat Pengantar Survey</div>
+    <div class="perihal">Perihal: Surat Permohonan Kerja Praktik</div>
 
     <b>Kepada yth.</b> <br>
-    <b>{{ $suratSPTA['tempatPenelitian'] }}</b> <br>
-    <b>{{ $suratSPTA['alamatPenelitian'] }}</b>
+    <b>{{ $suratSKP['tempatKP'] }}</b> <br>
+    {{ $suratSKP['alamatKP'] }}
     
     <p>Dengan Hormat,</p>
-    <p>Melalui surat ini, kami memohon agar mahasiswa program sarjana Desain Komunikasi Visual Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha di bawah ini:
+    <p>Sesuai dengan kurikulum yang berlaku pada Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha, setiap mahasiswa diwajibkan membuat tugas dan
+        laporan kerja praktik. Sehubungan dengan hal tersebut, kami mohon bantuan Bapak/Ibu agar mengizinkan mahasiswa kami tersebut di bawah ini:
     </p>
 
-    <table width="100%" cellspacing="0" cellpadding="6" style="border:1px solid #000; border-collapse:collapse;">
+    <table width="80%" cellspacing="0" cellpadding="6" style="border:1px solid #000; border-collapse:collapse;">
         <tr>
-            <td style="width:10%; border:1px solid #000;">No</td>
-            <td style="width:70%; border:1px solid #000;">NRP</td>
+            <td style="width:10%; border:1px solid #000;">NRP</td>
             <td style="width:70%; border:1px solid #000;">Nama Mahasiswa</td>
-            <td style="width:70%; border:1px solid #000;">Telp</td>
         </tr>
         <tr>
-            <td style="border:1px solid #000;">1</td>
             <td style="border:1px solid #000;">{{ $pengguna['id'] }}</td>
             <td style="border:1px solid #000;">{{ $pengguna['nama'] }}</td>
-            <td style="border:1px solid #000;">{{ $mahasiswaDetail['noHandphone'] ?: $mahasiswaDetail['telpon'] }}</td>
         </tr>
     </table>
+
     
-    <p>Diijinkan untuk melakukan survey untuk Foto Tempat, Meminta Data, Meminta Denah, Wawancara, Tour Lokasi dan dokumentasi video di Lembaga Bapak/Ibu. Survey ini dilakukan
-        untuk keperluan Tugas Akhir Mata Kuliah {{ $suratSPTA['mataKuliah'] }} pada Program Sarjana Desain Komunikasi Visual Fakultas Humaniora dan Industri Kreatif Universitas
-        Kristen Maranatha, dengan topik <b>"{{ $suratSPTA['judulTugas'] }}."</b>
+    <p>Untuk memperoleh kesempatan praktik kerja, memperoleh data dan keterangan yang diperlukan. Atas perhatian dan bantuan Bapak/Ibu, kami ucapkan terima kasih.
     </p>
-    <p>Mahasiswa yang bersangkutan akan menjaga protokol kesehatan selama proses survey dan bersedia ditegur bila tidak memenuhi protokol yang berlaku di tempat Bapak/Ibu.
-    </p>
-    <p>Atas bantuannya, kami ucapkan terima kasih</p>
+
 
     <table width="100%" style="margin-top:30px;">
         <tr>
             <td width="50%" style="text-align:left; vertical-align:top;">
-                Mengetahui,<br>
-                Kaprodi Desain Komunikasi Visual <br>
-                {{ $pimpinan1['fakultas'] }}
+                Mengetahui,
                  <br><br><br><br><br>
 
                 <b>{{ $pimpinan1->pengguna->nama }}</b><br>
+                Kaprog. Sarjana DKV UK Maranatha
             </td>
             <td width="50%" style="text-align:left; vertical-align:top;">
-                Bandung, <br>
-                Hormat Kami, <br>
-                Dosen Koordinator TUgas Akhir <br>
-                Prodi DKV - FHIK
-                <br><br><br><br><br>
-
+                Bandung, {{ $tanggalDisetujui }}<br>
+                Hormat Kami,
+                <br>
+                <img src="{{ public_path($pimpinan2['ttdPath']) }}" alt="TTD" style="width:180px;"><br>
                 <b>{{ $pimpinan2->pengguna->nama }}</b><br>
+                Dosen Koordinator Kerja Praktik
             </td>
         </tr>
     </table>

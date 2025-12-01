@@ -7,7 +7,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
             <div class="card-body">
-                <p class="card-title">Advanced Table</p>
+                <p class="card-title">Histori Pengajuan Surat</p>
                 <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
@@ -40,7 +40,7 @@
                                         <td>
                                             @if($pengajuan->status_id == 1)
                                                 <!-- Button Lihat -->
-                                                <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#lihat{{ $pengajuan->id }}">
+                                                <a class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#lihat{{ $pengajuan->id }}">
                                                     <i class="ti-file btn-icon-prepend"></i>
                                                     Lihat Data
                                                 </a>
@@ -53,25 +53,25 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <p>Nama: {{ Auth::user()->nama }}</p>
-                                                        <p>NRP: {{ Auth::user()->id }}</p>
+                                                        <p>Nama: {{ $pengajuan->pengguna->nama }}</p>
+                                                        <p>NRP: {{ $pengajuan->pengguna->id }}</p>
                                                         @if($pengajuan->jenisSurat_id == 1)
-                                                            <p>Tempat / Tanggal Lahir: {{ Auth::user()->mahasiswaDetail->tempatTanggalLahir }}</p>
-                                                            <p>Alamat: {{ Auth::user()->mahasiswaDetail->alamat }}</p>
-                                                            <p>Program Studi: {{ Auth::user()->programStudi }}</p>
+                                                            <p>Tempat / Tanggal Lahir: {{$pengajuan->pengguna->mahasiswaDetail->tempatTanggalLahir }}</p>
+                                                            <p>Alamat: {{$pengajuan->pengguna->mahasiswaDetail->alamat }}</p>
+                                                            <p>Program Studi: {{$pengajuan->pengguna->programStudi }}</p>
                                                             <p>Tahun Akademik: {{ $pengajuan->suratKMA->tahunAkademik }}</p>
-                                                            <p>Nama Orang Tua / Wali: {{ Auth::user()->mahasiswaDetail->namaWali }}</p>
-                                                            <p>Alamat Orang Tua: {{ Auth::user()->mahasiswaDetail->alamatOrangTua }}</p>
-                                                            <p>Pekerjaan Orang Tua: {{ Auth::user()->mahasiswaDetail->pekerjaanOrangTua }}</p>
-                                                            <p>Instansi: {{ $pengajuan->suratKMA->instansi ?: '-'}}'</p>
+                                                            <p>Nama Orang Tua / Wali: {{$pengajuan->pengguna->mahasiswaDetail->namaWali }}</p>
+                                                            <p>Alamat Orang Tua: {{$pengajuan->pengguna->mahasiswaDetail->alamatOrangTua }}</p>
+                                                            <p>Pekerjaan Orang Tua: {{$pengajuan->pengguna->mahasiswaDetail->pekerjaanOrangTua }}</p>
+                                                            <p>Instansi: {{ $pengajuan->suratKMA->instansi ?: '-'}}</p>
                                                             <p>Pangkat / Golongan: {{ $pengajuan->suratKMA->pangkatGolongan ?: '- / -' }}</p>
                                                             <p>Jabatan: {{ $pengajuan->suratKMA->jabatan ?: '-' }}</p>
                                                         @elseif($pengajuan->jenisSurat_id == 2)
-                                                            <p>Email: {{ Auth::user()->mahasiswaDetail->email }}</p>
+                                                            <p>Email: {{$pengajuan->pengguna->mahasiswaDetail->email }}</p>
                                                             <p>Tempat Kerja Praktik: {{ $pengajuan->suratSKP->tempatKP }}</p>
                                                             <p>Alamat Kerja Praktik: {{ $pengajuan->suratSKP->alamatKP }}</p>
                                                         @elseif($pengajuan->jenisSurat_id == 3)
-                                                            <p>Email: {{ Auth::user()->mahasiswaDetail->email }}</p>
+                                                            <p>Email: {{$pengajuan->pengguna->mahasiswaDetail->email }}</p>
                                                             <p>Judul Tugas Akhir: {{ $pengajuan->suratSPTA->judulTugas }}</p>
                                                             <p>Tempat Penelitian: {{ $pengajuan->suratSPTA->tempatPenelitian }}</p>
                                                             <p>Alamat Penelitian: {{ $pengajuan->suratSPTA->alamatPenelitian }}</p>
@@ -143,7 +143,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
-\                                                    </div>
+                                                    </div>
                                                     </div>
                                                 </div>
                                                 </div>
@@ -155,7 +155,7 @@
                             @endforeach
                             @if($ada == false)
                                 <tr>
-                                    <td>Tidak ada data yang ditampilkan</td>
+                                    <td colspan="4" class="text-center"><b>Tidak ada data yang ditampilkan</b></td>
                                 </tr>
                             @endif
                         </tbody>
@@ -163,12 +163,9 @@
                     </div>
                 </div>
                 </div>
+
                 </div>
             </div>
-
-            
-            </div>
-        </div>
         </div>
     </div>
 </div>

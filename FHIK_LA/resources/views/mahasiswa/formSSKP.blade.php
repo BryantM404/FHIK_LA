@@ -22,20 +22,20 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="tempatKP">Tempat Kerja Praktik</label>
-                            <input type="text" class="form-control" id="tempatKP" name="tempatKP" required>
+                            <input type="text" class="form-control" id="tempatKP" name="tempatKP" required placeholder="Tempat Kerja Praktik">
                         </div>
                         <div class="form-group">
                             <label for="alamatKP">Alamat Kerja Praktik</label>
-                            <input type="text" class="form-control" id="alamatKP" name="alamatKP" required>
+                            <input type="text" class="form-control" id="alamatKP" name="alamatKP" required placeholder="Alamat Kerja Praktik">
                         </div>
                         
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
                         <button type="reset" class="btn btn-primary mr-2">Reset</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <a class="btn btn-danger" href="{{ route('mahasiswaPengajuan') }}">Cancel</a>
                     </form>
                 </div>
             </div>

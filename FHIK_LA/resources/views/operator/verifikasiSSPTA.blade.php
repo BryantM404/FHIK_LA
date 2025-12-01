@@ -42,7 +42,7 @@
                                         </td>
                                         <td>
                                             <!-- Button Lihat -->
-                                            <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#lihat{{ $pengajuan->id }}">
+                                            <a class="btn btn-primary btn-icon-text" data-bs-toggle="modal" data-bs-target="#lihat{{ $pengajuan->id }}">
                                                 <i class="ti-file btn-icon-prepend"></i>
                                                 Lihat Data
                                             </a>
@@ -73,7 +73,7 @@
 
                                             <!-- Button Verifikasi -->
                                             <a class="btn btn-success btn-icon-text" data-bs-toggle="modal" data-bs-target="#verifikasi{{ $pengajuan->id }}">
-                                                <i class="ti-file btn-icon-prepend"></i>
+                                                <i class="ti-check btn-icon-prepend"></i>
                                                 Verifikasi
                                             </a>
                                             <!-- Modal Verifikasi -->
@@ -97,7 +97,7 @@
 
                                             <!-- Button Tolak -->
                                             <a class="btn btn-danger btn-icon-text" data-bs-toggle="modal" data-bs-target="#tolak{{ $pengajuan->id }}">
-                                                <i class="ti-file btn-icon-prepend"></i>
+                                                <i class="ti-trash btn-icon-prepend"></i>
                                                 Tolak
                                             </a>
                                             <!-- Modal Tolak -->
@@ -129,7 +129,7 @@
                                 @endforeach
                             @if($ada == false)
                                 <tr>
-                                    <td>Tidak ada data yang ditampilkan</td>
+                                    <td colspan="4" class="text-center"><b>Tidak ada data yang ditampilkan</b></td>
                                 </tr>
                             @endif
                         </tbody>
@@ -137,12 +137,9 @@
                     </div>
                 </div>
                 </div>
+
                 </div>
             </div>
-
-            
-            </div>
-        </div>
         </div>
     </div>
 </div>

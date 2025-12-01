@@ -22,32 +22,32 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ Auth::user()->mahasiswaDetail->email ?? '' }}" required placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label for="judulTugas">Judul Tugas Akhir</label>
-                            <input type="text" class="form-control" id="judulTugas" name="judulTugas" required>
+                            <input type="text" class="form-control" id="judulTugas" name="judulTugas" required placeholder="Judul Tugas Akhir">
                         </div>
                         <div class="form-group">
                             <label for="tempatPenelitian">Tempat Penelitian</label>
-                            <input type="text" class="form-control" id="tempatPenelitian" name="tempatPenelitian" required>
+                            <input type="text" class="form-control" id="tempatPenelitian" name="tempatPenelitian" required placeholder="Tempat Penelitian">
                         </div>
                         <div class="form-group">
                             <label for="alamatPenelitian">Alamat Penelitian</label>
-                            <input type="text" class="form-control" id="alamatPenelitian" name="alamatPenelitian" required>
+                            <input type="text" class="form-control" id="alamatPenelitian" name="alamatPenelitian" required placeholder="Alamat Penelitian">
                         </div>
                         <div class="form-group">
                             <label for="mataKuliah">Mata Kuliah</label>
-                            <input type="text" class="form-control" id="mataKuliah" name="mataKuliah" required>
+                            <input type="text" class="form-control" id="mataKuliah" name="mataKuliah" required placeholder="Mata Kuliah">
                         </div>
                         <div class="form-group">
                             <label for="dosenMataKuliah">Dosen Mata Kuliah</label>
-                            <input type="text" class="form-control" id="dosenMataKuliah" name="dosenMataKuliah" required>
+                            <input type="text" class="form-control" id="dosenMataKuliah" name="dosenMataKuliah" required placeholder="Dosen Mata Kuliah">
                         </div>
                         
-                        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                        <button type="submit" class="btn btn-success mr-2">Submit</button>
                         <button type="reset" class="btn btn-primary mr-2">Reset</button>
-                        <button class="btn btn-light">Cancel</button>
+                        <a class="btn btn-danger" href="{{ route('mahasiswaPengajuan') }}">Cancel</a>
                     </form>
                 </div>
             </div>

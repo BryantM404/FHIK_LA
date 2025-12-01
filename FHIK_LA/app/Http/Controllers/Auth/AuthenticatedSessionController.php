@@ -25,11 +25,35 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
+
+        $user = Auth::user();
+
+        if ($request->login_as === 'mahasiswa') {
+            if ($user->role_id != 4) {
+                Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return back()->withErrors([
+                    'login' => 'Akun tidak terdaftar sebagai mahasiswa.'
+                ]);
+            }
+        }
+
+        if ($request->login_as === 'pegawai') {
+            if (!in_array($user->role_id, [1,2,3])) {
+                Auth::guard('web')->logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+                return back()->withErrors([
+                    'login' => 'Akun tidak terdaftar sebagai pegawai.'
+                ]);
+            }
+        }
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
+
 
     /**
      * Destroy an authenticated session.

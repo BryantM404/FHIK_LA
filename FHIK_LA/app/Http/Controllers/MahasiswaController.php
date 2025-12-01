@@ -129,6 +129,7 @@ class MahasiswaController extends Controller
                 ['pengguna_id' => $userId],
                 [
                     'email' => $validated['email'],
+                    'status' => 'A'
                 ]
             );
 
@@ -174,6 +175,7 @@ class MahasiswaController extends Controller
                 ['pengguna_id' => $userId],
                 [
                     'email' => $validated['email'],
+                    'status' => 'A'
                 ]
             );
 

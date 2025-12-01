@@ -1,4 +1,11 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div style="padding-top:20px; padding-left:20px">
+        <p style="color: black; font-weight: 500; font-size: 18px; margin: 0;">
+            {{ Auth::user()->id }} / {{ Auth::user()->nama }} 
+        </p>
+        <p style="padding-top:5px; color: black; font-size: 16px;">{{ Auth::user()->role->nama }}</p>
+    </div>
+
     <ul class="nav">
         <li class="nav-item">
         <a class="nav-link" href="{{ route('dashboard') }}">
@@ -11,10 +18,26 @@
         {{-- Sidebar Admin --}}
         @if(Auth::user()->role_id == 1)
             <li class="nav-item">
-            <a class="nav-link" href="pages/documentation/documentation.html">
-                <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Data Mahasiswa</span>
-            </a>
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="icon-layout menu-icon"></i>
+                    <span class="menu-title">Data Mahasiswa</span>
+                    <i class="menu-arrow"></i>
+                </a>
+
+                <div class="collapse" id="ui-basic" style="overflow: visible;">
+                    <ul class="nav flex-column sub-menu" style="padding-left: 10px;">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa41') }}">Sastra Inggris</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa42') }}">Sastra Jepang</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa44') }}">Bahasa Mandarin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa46') }}">Sastra Cina</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa61') }}">D3 Seni Rupa Dan Desain</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa62') }}">Seni Rupa Murni</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa63') }}">Desain Interior</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa64') }}">Desain Komunikasi Visual</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa65') }}">Arsitektur</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('viewMahasiswa66') }}">Desain Mode</a></li>
+                    </ul>
+                </div>
             </li>
         
 
@@ -60,12 +83,16 @@
                         <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSKMA') }}">SKMA</a></li>
                     @endif
                     {{-- Kaprodi & Koordinator KP --}}
-                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0|| strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator KP') === 0)
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSKP') }}">SSKP</a></li>
+                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSKPKaprodi') }}">SSKP</a></li>
+                    @elseif(strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator KP') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSKPKoor') }}">SSKP</a></li>
                     @endif
                     {{-- Kaprodi & Koordinator TA --}}
-                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0|| strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator TA') === 0)
-                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSPTA') }}">SSPTA</a></li>
+                    @if(strpos(Auth::user()->pimpinanDetail->jabatan, 'Kaprodi') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSPTAKaprodi') }}">SSPTA</a></li>
+                    @elseif(strpos(Auth::user()->pimpinanDetail->jabatan, 'Koordinator TA') === 0)
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('validasiSSPTAKoor') }}">SSPTA</a></li>
                     @endif
                 </ul>
             </div>

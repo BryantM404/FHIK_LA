@@ -38,46 +38,6 @@ class OperatorController extends Controller
         return(view('operator.arsip'))
             ->with('pengajuans', Pengajuan::all());
     }
-    
-    private function generateNomorSurat(Pengajuan $pengajuan)
-    {
-        $kodeJenis = [
-            1 => 'SKMA',
-            2 => 'SKP',
-            3 => 'SPTA'
-        ];
-
-        $kodeProdi = [
-            'Informatika' => 'IF',
-            'Sistem Informasi' => 'SI',
-            'Teknik Komputer' => 'TK',
-        ];
-
-        $bulanRomawi = [
-            1 => 'I', 2 => 'II', 3 => 'III', 4 => 'IV',
-            5 => 'V', 6 => 'VI', 7 => 'VII', 8 => 'VIII',
-            9 => 'IX', 10 => 'X', 11 => 'XI', 12 => 'XII',
-        ];
-
-        // --- Counter per tahun ---
-        $tahun = now()->year;
-        $counter = Pengajuan::whereYear('tanggalPengajuan', $tahun)->count() + 1;
-        $counterFormatted = str_pad($counter, 3, '0', STR_PAD_LEFT);
-
-        $jenis = $kodeJenis[$pengajuan->jenisSurat_id] ?? 'XXX';
-        $prodi = $kodeProdi[$pengajuan->pengguna->programStudi] ?? 'XX';
-
-        $bulan = $bulanRomawi[now()->month];
-        if($pengajuan->jenisSurat_id == 1){
-            return "{$counterFormatted}/{$jenis}/FHIK/UKM/{$bulan}/{$tahun}";
-        } elseif($pengajuan->jenisSurat_id == 2){
-            return "{$counterFormatted}/{$jenis}/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
-        } else{
-            return "{$counterFormatted}/{$jenis}/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
-        }
-    }
-
-
 
     public function verifikasiSurat($pengajuan)
     {
@@ -86,11 +46,9 @@ class OperatorController extends Controller
             $data = Pengajuan::with('pengguna')->findOrFail($pengajuan);
             $userId = Auth::id();
 
-            $nomorSurat = $this->generateNomorSurat($data);
 
             $data->update([
                 'status_id' => 2,
-                'noSurat' => $nomorSurat
             ]);
 
             LogPengguna::create([
@@ -100,44 +58,44 @@ class OperatorController extends Controller
             ]);
             
             if ($data->jenisSurat_id == 1) {
-                $template = 'surat.verifikasi-skma';
+                $template = 'surat.verifikasi.verifikasi-skma';
                 $pimpinan1 = PimpinanDetail::where('jabatan', 'Dekan')->first();
                 $pimpinan2 = null;
 
-                $filename = sprintf('Surat Keterangan Mahasiswa Aktif_%d_%s.pdf', $data->pengguna->id, now()->format('YmdHis'));
+                $filename = sprintf('Surat Keterangan Mahasiswa Aktif_%d_%s.pdf', $data->pengguna->id, $data->id);
                 $relativePath = "surat/SKMA/{$filename}";
             
             } elseif ($data->jenisSurat_id == 2) {
                 if($data->pengguna->programStudi == '63 - Desain Interior'){
-                    $template = 'surat.verifikasi-sskp-63';
+                    $template = 'surat.verifikasi.verifikasi-sskp-63';
                     $pimpinan1 = PimpinanDetail::where('jabatan', 'Kaprodi Desain Interior')->first();
                     $pimpinan2 = PimpinanDetail::where('jabatan', 'Koordinator KP - D.Interior')->first();
                 } else{
-                    $template = 'surat.verifikasi-sskp-64';
+                    $template = 'surat.verifikasi.verifikasi-sskp-64';
                     $pimpinan1 = PimpinanDetail::where('jabatan', 'Kaprodi Desain Komunikasi Visual')->first();
                     $pimpinan2 = PimpinanDetail::where('jabatan', 'Koordinator KP - DKV')->first();
                 }
-                $filename = sprintf('Surat Survei Kerja Praktik_%d_%s.pdf', $data->pengguna->id, now()->format('YmdHis'));
+                $filename = sprintf('Surat Survei Kerja Praktik_%d_%s.pdf', $data->pengguna->id, $data->id);
                 $relativePath = "surat/SSKP/{$filename}";
 
             } elseif ($data->jenisSurat_id == 3) {
                 if($data->pengguna->programStudi == '63 - Desain Interior'){
-                    $template = 'surat.verifikasi-sspta-63';
+                    $template = 'surat.verifikasi.verifikasi-sspta-63';
                     $pimpinan1 = PimpinanDetail::where('jabatan', 'Kaprodi Desain Interior')->first();
                     $pimpinan2 = PimpinanDetail::where('jabatan', 'Koordinator TA - D.Interior')->first();
                 } else{
-                    $template = 'surat.verifikasi-sspta-64';
+                    $template = 'surat.verifikasi.verifikasi-sspta-64';
                     $pimpinan1 = PimpinanDetail::where('jabatan', 'Kaprodi Desain Komunikasi Visual')->first();
                     $pimpinan2 = PimpinanDetail::where('jabatan', 'Koordinator TA - DKV')->first();
                 }
-                $filename = sprintf('Surat Survei Penelitian Tugas Akhir_%d_%s.pdf', $data->pengguna->id, now()->format('YmdHis'));
+                $filename = sprintf('Surat Survei Penelitian Tugas Akhir_%d_%s.pdf', $data->pengguna->id, $data->id);
                 $relativePath = "surat/SSPTA/{$filename}";
 
             }
 
             $pdfData = [
                 'pengajuan' => $data,
-                'nomorSurat' => $nomorSurat,
+                'nomorSurat' => '',
                 'pengguna' => $data->pengguna,
                 'mahasiswaDetail' => $data->pengguna->mahasiswaDetail,
                 'pimpinan1' => $pimpinan1,
@@ -183,6 +141,5 @@ class OperatorController extends Controller
 
         return back();
     }
-
 
 }
