@@ -101,7 +101,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success mr-2">Update</button>
-                        <a href="{{ route('viewMahasiswa') }}" class="btn btn-danger">Cancel</a>
+                        <a href="{{ route('dashboard') }}" class="btn btn-danger">Cancel</a>
 
                     </form>
 

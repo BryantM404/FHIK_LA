@@ -128,7 +128,7 @@ class AdminController extends Controller
                 'pengguna_id' => $userId,
             ]);
         });
-
+        notify()->success('Mahasiswa berhasil ditambahkan!','Sukses!' );
         return redirect()->route('dashboard');
     }
 
@@ -188,8 +188,9 @@ class AdminController extends Controller
                 'pengguna_id' => Auth::id(),
             ]);
         });
+        notify()->success('Data mahasiswa berhasil diedit!','Sukses!');
 
-        return redirect()->route('viewMahasiswa');
+        return redirect()->route('dashboard');
     }
 
     public function deleteMahasiswa($id)
@@ -205,9 +206,10 @@ class AdminController extends Controller
             $mahasiswa->delete();
         });
 
+        notify()->success('Data mahasiswa berhasil dihapus!','Sukses!');
+
         return redirect()->back();
     }
-
 
 
 }

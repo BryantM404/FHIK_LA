@@ -50,6 +50,7 @@ class AuthenticatedSessionController extends Controller
                 ]);
             }
         }
+        notify()->success('Berhasil Login!','Sukses!');
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

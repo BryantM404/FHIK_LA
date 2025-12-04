@@ -113,7 +113,9 @@ class OperatorController extends Controller
             $data->dokumenPath = "storage/{$relativePath}";
             $data->save();
         });
+        notify()->success('Surat berhasil diverifikasi!','Sukses!');
 
+        
         return back();
     }
 
@@ -138,6 +140,7 @@ class OperatorController extends Controller
                 'created_at' => Carbon::now('Asia/Jakarta'),
             ]);
         });
+        notify()->success('Surat berhasil ditolak!','Sukses!');
 
         return back();
     }

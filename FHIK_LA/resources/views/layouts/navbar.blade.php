@@ -3,7 +3,7 @@
     <a class="navbar-brand brand-logo mr-5" href=""><img src="{{ asset('images/fhik.png')}}" style="width: auto; height: 45px;" alt="logo"/></a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-    <p style="color: #FFFFFF; font-size:1.5rem" class="mt-2">APLIKASI PENGAJUAN SURAT AKADEMIK</p>
+    <p style="color: #FFFFFF; font-size:1.5rem" class="text-white mt-2 fs-5 fs-md-4 fs-lg-3">APLIKASI PENGAJUAN SURAT AKADEMIK</p>
     {{-- <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="icon-menu"></span>
     </button>
@@ -20,7 +20,7 @@
         </li>
     </ul> --}}
     <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown">
+        {{-- <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
             <i class="icon-bell mx-0"></i>
             <span class="count"></span>
@@ -67,15 +67,25 @@
             </div>
             </a>
         </div>
-        </li>
+        </li> --}}
         <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-            <img src="{{ asset('images/faces/face28.jpg')}}" alt="profile"/>
+            <img src="{{ asset('images/profile.jpg')}}"
+                alt="profile"
+                style="
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid black;
+                "
+            />
         </a>
+
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-            <a class="dropdown-item">
-            <i class="ti-settings text-primary"></i>
-            Settings
+            <a class="dropdown-item" href="{{ route('formUbahPassword') }}">
+                <i class="ti-settings text-primary"></i>
+                Ubah Password
             </a>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

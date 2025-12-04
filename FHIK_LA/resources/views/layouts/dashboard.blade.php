@@ -189,6 +189,10 @@
             @php($pengajuanStatus2 = 0)
             @php($pengajuanStatus3 = 0)
             @php($pengajuanStatus4 = 0)
+            @php($pengajuanStatus1Fakultas = 0)
+            @php($pengajuanStatus2Fakultas = 0)
+            @php($pengajuanStatus3Fakultas = 0)
+            @php($pengajuanStatus4Fakultas = 0)
             @foreach($pengajuans as $pengajuan)
                 @if($pengajuan->jenisSurat_id == 1)
                     @php($pengajuanJenis1++)
@@ -198,15 +202,26 @@
                     @php($pengajuanJenis3++)
                 @endif
 
-                @if($pengajuan->status_id == 1 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi)
+                @if($pengajuan->status_id == 1 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id != 1)
                     @php($pengajuanStatus1++)
-                @elseif($pengajuan->status_id == 2 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi)
+                @elseif($pengajuan->status_id == 2 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id != 1)
                     @php($pengajuanStatus2++)
-                @elseif($pengajuan->status_id == 3 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi)
+                @elseif($pengajuan->status_id == 3 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id != 1)
                     @php($pengajuanStatus3++)
-                @elseif($pengajuan->status_id == 4 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi)
+                @elseif($pengajuan->status_id == 4 && $pengajuan->pengguna->programStudi == Auth::user()->programStudi && $pengajuan->jenisSurat_id != 1)
                     @php($pengajuanStatus4++)
                 @endif
+
+                @if($pengajuan->status_id == 1 && Auth::user()->programStudi == NULL && $pengajuan->jenisSurat_id == 1)
+                    @php($pengajuanStatus1Fakultas++)
+                @elseif($pengajuan->status_id == 2 && Auth::user()->programStudi == NULL && $pengajuan->jenisSurat_id == 1)
+                    @php($pengajuanStatus2Fakultas++)
+                @elseif($pengajuan->status_id == 3 && Auth::user()->programStudi == NULL && $pengajuan->jenisSurat_id == 1)
+                    @php($pengajuanStatus3Fakultas++)
+                @elseif($pengajuan->status_id == 4 && Auth::user()->programStudi == NULL && $pengajuan->jenisSurat_id == 1)
+                    @php($pengajuanStatus4Fakultas++)
+                @endif
+
                 @php($pengajuanTotal++)
             @endforeach
             @php($total = $pengajuanTotal > 0 ? $pengajuanTotal : 1)
@@ -262,6 +277,52 @@
                     <p class="card-title">Jumlah Pengajuan Surat Akademik</p>
                     <p style="font-size:15px; margin-top:-20px; font-weight:bold">berdasarkan status surat</p>
                     <div class="charts-data">
+                    @if(Auth::user()->programStudi == NULL)
+                        <div class="mt-3">
+                            <p class="mb-0">Diproses</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="progress progress-md flex-grow-1 mr-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" 
+                                        style="width: {{ ($pengajuanStatus1Fakultas / $total) * 100 }}%" 
+                                        aria-valuenow="{{ $pengajuanStatus1Fakultas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mb-0">{{ $pengajuanStatus1Fakultas }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <p class="mb-0">Terverifikasi</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="progress progress-md flex-grow-1 mr-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" 
+                                        style="width: {{ ($pengajuanStatus2Fakultas / $total) * 100 }}%" 
+                                        aria-valuenow="{{ $pengajuanStatus2Fakultas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mb-0">{{ $pengajuanStatus2Fakultas }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <p class="mb-0">Tervalidasi </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="progress progress-md flex-grow-1 mr-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" 
+                                        style="width: {{ ($pengajuanStatus3Fakultas / $total) * 100 }}%" 
+                                        aria-valuenow="{{ $pengajuanStatus3Fakultas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mb-0">{{ $pengajuanStatus3Fakultas }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <p class="mb-0">Ditolak </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="progress progress-md flex-grow-1 mr-4">
+                                    <div class="progress-bar bg-primary" role="progressbar" 
+                                        style="width: {{ ($pengajuanStatus4Fakultas / $total) * 100 }}%" 
+                                        aria-valuenow="{{ $pengajuanStatus4Fakultas }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mb-0">{{ $pengajuanStatus4Fakultas }}</p>
+                            </div>
+                        </div>
+                    @else
                         <div class="mt-3">
                             <p class="mb-0">Diproses</p>
                             <div class="d-flex justify-content-between align-items-center">
@@ -306,6 +367,7 @@
                                 <p class="mb-0">{{ $pengajuanStatus4 }}</p>
                             </div>
                         </div>
+                    @endif
                     </div>  
                 </div>
                 </div>

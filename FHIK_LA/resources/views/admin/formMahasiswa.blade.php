@@ -19,18 +19,22 @@
                             <label for="nama">Nama</label>
                             <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" required>
                         </div>
-                        <select class="form-control" name="programStudi" required>
-                            <option value="41 - Sastra Inggris">41 - Sastra Inggris</option>
-                            <option value="42 - Sastra Jepang">42 - Sastra Jepang</option>
-                            <option value="44 - Bahasa Mandarin">44 - Bahasa Mandarin</option>
-                            <option value="46 - Sastra Cina">46 - Sastra Cina</option>
-                            <option value="61 - Program Diploma 3 Seni Rupa Dan Desain">61 - Program Diploma 3 Seni Rupa Dan Desain</option>
-                            <option value="62 - Seni Rupa Murni">62 - Seni Rupa Murni</option>
-                            <option value="63 - Desain Interior">63 - Desain Interior</option>
-                            <option value="64 - Desain Komunikasi Visual">64 - Desain Komunikasi Visual</option>
-                            <option value="65 - Arsitektur">65 - Arsitektur</option>
-                            <option value="66 - Desain Mode">66 - Desain Mode</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="programStudi">Program Studi</label>
+                            <select class="form-control" name="programStudi" required>
+                                <option value="41 - Sastra Inggris">41 - Sastra Inggris</option>
+                                <option value="42 - Sastra Jepang">42 - Sastra Jepang</option>
+                                <option value="44 - Bahasa Mandarin">44 - Bahasa Mandarin</option>
+                                <option value="46 - Sastra Cina">46 - Sastra Cina</option>
+                                <option value="61 - Program Diploma 3 Seni Rupa Dan Desain">61 - Program Diploma 3 Seni Rupa Dan Desain</option>
+                                <option value="62 - Seni Rupa Murni">62 - Seni Rupa Murni</option>
+                                <option value="63 - Desain Interior">63 - Desain Interior</option>
+                                <option value="64 - Desain Komunikasi Visual">64 - Desain Komunikasi Visual</option>
+                                <option value="65 - Arsitektur">65 - Arsitektur</option>
+                                <option value="66 - Desain Mode">66 - Desain Mode</option>
+                            </select>
+                        </div>
+                        
                         <div class="form-group">
                             <label for="tempatTanggalLahir">Tempat / Tanggal Lahir</label>
                             <input type="text" class="form-control" id="tempatTanggalLahir" placeholder="Tempat / Tanggal Lahir" name="tempatTanggalLahir" required>

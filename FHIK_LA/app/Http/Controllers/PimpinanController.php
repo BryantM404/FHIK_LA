@@ -64,33 +64,46 @@ class PimpinanController extends Controller
         $bulan = $bulanRomawi[now()->month];
         $prodi = $kodeProdi[$pengajuan->pengguna->programStudi] ?? 'XX';
 
+       
+        if ($pengajuan->jenisSurat_id == 1) {
+            $counter = Pengajuan::whereYear('tanggalPengajuan', $tahun)
+                ->where('jenisSurat_id', 1)
+                ->whereNotNull('noSurat')
+                ->count() + 1;
+
+            $counterFormatted = str_pad($counter, 3, '0', STR_PAD_LEFT);
+
+            return "{$counterFormatted}/SKM/FHIK/UKM/{$bulan}/{$tahun}";
+        }
+
+
         $counter = Pengajuan::whereYear('tanggalPengajuan', $tahun)
             ->where('jenisSurat_id', $pengajuan->jenisSurat_id)
             ->whereHas('pengguna', function ($q) use ($pengajuan) {
                 $q->where('programStudi', $pengajuan->pengguna->programStudi);
             })
+            ->whereNotNull('noSurat')
             ->count() + 1;
 
         $counterFormatted = str_pad($counter, 3, '0', STR_PAD_LEFT);
 
-
-        if ($pengajuan->jenisSurat_id == 1) {
-            return "{$counterFormatted}/SKM/FHIK/UKM/{$bulan}/{$tahun}";
-        }
         if ($pengajuan->pengguna->programStudi == "63 - Desain Interior") {
-
             if ($pengajuan->jenisSurat_id == 2) {
                 return "{$counterFormatted}/Srt.KP/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
             }
             return "{$counterFormatted}/AKD/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
         }
+
         if ($pengajuan->pengguna->programStudi == "64 - Desain Komunikasi Visual") {
             if ($pengajuan->jenisSurat_id == 2) {
                 return "{$counterFormatted}/AKD/TKP/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
             }
             return "{$counterFormatted}/AKD/TA/{$prodi}/FHIK/UKM/{$bulan}/{$tahun}";
         }
+
+        return null;
     }
+
 
     public function validasiSurat($pengajuan)
     {
@@ -99,14 +112,14 @@ class PimpinanController extends Controller
             $data = Pengajuan::with('pengguna')->findOrFail($pengajuan);
             $userId = Auth::id();
 
-            $KaprodiDI = PimpinanDetail::where('jabatan', 'Kaprodi Desain Interior')->first();
-            $KaprodiDKV = PimpinanDetail::where('jabatan', 'Kaprodi Desain Komunikasi Visual')->first();
-            $nomorSurat = '';
             if (
-                Auth::user()->pimpinanDetail->jabatan == $KaprodiDI->jabatan ||
-                Auth::user()->pimpinanDetail->jabatan == $KaprodiDKV->jabatan
+                Auth::user()->pimpinanDetail->jabatan == 'Kaprodi Desain Interior' ||
+                Auth::user()->pimpinanDetail->jabatan == 'Kaprodi Desain Komunikasi Visual' ||
+                Auth::user()->pimpinanDetail->jabatan == 'Dekan'
             ) {
                 $nomorSurat = $this->generateNomorSurat($data);
+            } else{
+                $nomorSurat = NULL;
             };
 
             $data->update([
@@ -114,7 +127,7 @@ class PimpinanController extends Controller
                 'noSurat' => $nomorSurat
             ]);
 
-            $tanggalFormatted = Carbon::parse($data->tanggalDisetujui)->translatedFormat('d F Y');
+            $tanggalFormatted = Carbon::parse($data->tanggalDisetujui)->locale('id')->translatedFormat('d F Y');
 
             LogPengguna::create([
                 'aktivitas' => 'Validasi pengajuan surat (id=' . $data->id . ')',
@@ -226,6 +239,7 @@ class PimpinanController extends Controller
                 'dokumenPath' => "storage/$relativePath",
             ]);
         });
+        notify()->success('Surat berhasil divalidasi!','Sukses!');
 
         return back();
     }
@@ -252,7 +266,7 @@ class PimpinanController extends Controller
                 'created_at' => Carbon::now('Asia/Jakarta'),
             ]);
         });
-
+        notify()->success('Surat berhasil ditolak!','Sukses!');
         return back();
     }
 

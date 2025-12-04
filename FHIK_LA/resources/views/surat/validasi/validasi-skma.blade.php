@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Surat Keterangan Mahasiswa</title>
+    <title>Surat Keterangan Mahasiswa Aktif</title>
 
     <style>
         body {
@@ -62,7 +62,7 @@
     </div>
 
     <div class="judul">SURAT KETERANGAN MAHASISWA</div>
-    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
+    <div class="nomor">No: {{ $pengajuan->noSurat }}</div>
 
     <p style="margin-top:-10px">Yang bertandatangan di bawah ini :</p>
 

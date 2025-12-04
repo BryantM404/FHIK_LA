@@ -9,7 +9,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #e85c25;      /* Warna oranye */
+            background: #e85c25;
             font-family: "Poppins", sans-serif;
             height: 100vh;
             display: flex;

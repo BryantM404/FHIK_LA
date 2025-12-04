@@ -19,7 +19,6 @@ class PimpinanDetailSeeder extends Seeder
                 'jabatan' => 'Dekan',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
                 'ttdPath' => 'storage/material/ttd/TTD_410048.png',
-                'capPath' => '',
                 'pengguna_id' => 410048
             ],
             [
@@ -27,7 +26,6 @@ class PimpinanDetailSeeder extends Seeder
                 'jabatan' => 'Kaprodi Desain Interior',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
                 'ttdPath' => 'storage/material/ttd/TTD_630040.png',
-                'capPath' => '',
                 'pengguna_id' => 630040
             ],
             [
@@ -49,7 +47,6 @@ class PimpinanDetailSeeder extends Seeder
                 'jabatan' => 'Kaprodi Desain Komunikasi Visual',
                 'fakultas' => 'Fakultas Humaniora dan Industri Kreatif',
                 'ttdPath' => 'storage/material/ttd/TTD_640079.png',
-                'capPath' => '',
                 'pengguna_id' => 640079
             ],
             [

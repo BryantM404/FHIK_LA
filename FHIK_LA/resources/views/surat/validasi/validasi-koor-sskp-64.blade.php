@@ -19,25 +19,6 @@
             margin-top: -80px;
         }
 
-        .judul {
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 5px;
-            font-size: 14pt;
-        }
-
-        .nomor, .lampiran {
-            text-align: left;
-            margin-top: 2px;
-        }
-
-        .perihal {
-            text-align: left;
-            margin-top: 2px;
-            margin-bottom: 20px;
-        }
-
         table.data-table {
             border-collapse: collapse;
             margin-top: -10px;
@@ -63,19 +44,33 @@
 <body>
 
     <div class="kop">
-        <img src="{{ public_path('storage/material/kop/Kop Surat DI.png') }}">
+        <img src="{{ public_path('storage/material/kop/Kop Surat DKV.png') }}">
     </div>
 
-    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
-    <div class="lampiran">Lampiran: -</div>
-    <div class="perihal">Perihal: Surat Permohonan Kerja Praktik</div>
+    <table style="margin-top: 10px; margin-bottom: 25px; margin-left:-3px">
+        <tr>
+            <td style="width: 90px;">No</td>
+            <td style="width: 10px;">:</td>
+            <td>{{ $pengajuan->noSurat }}</td>
+        </tr>
+        <tr>
+            <td>Lampiran</td>
+            <td>:</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Perihal</td>
+            <td>:</td>
+            <td>Surat Permohonan Kerja Praktik</td>
+        </tr>
+    </table>
 
     <b>Kepada yth.</b> <br>
     <b>{{ $suratSKP['tempatKP'] }}</b> <br>
     {{ $suratSKP['alamatKP'] }}
     
     <p>Dengan Hormat,</p>
-    <p>Sesuai dengan kurikulum yang berlaku pada Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha, setiap mahasiswa diwajibkan membuat tugas dan
+    <p style="text-align: justify">Sesuai dengan kurikulum yang berlaku pada Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha, setiap mahasiswa diwajibkan membuat tugas dan
         laporan kerja praktik. Sehubungan dengan hal tersebut, kami mohon bantuan Bapak/Ibu agar mengizinkan mahasiswa kami tersebut di bawah ini:
     </p>
 
@@ -91,15 +86,16 @@
     </table>
 
     
-    <p>Untuk memperoleh kesempatan praktik kerja, memperoleh data dan keterangan yang diperlukan. Atas perhatian dan bantuan Bapak/Ibu, kami ucapkan terima kasih.
+    <p style="text-align: justify">Untuk memperoleh kesempatan praktik kerja, memperoleh data dan keterangan yang diperlukan. Atas perhatian dan bantuan Bapak/Ibu, kami ucapkan terima kasih.
     </p>
 
 
     <table width="100%" style="margin-top:30px;">
         <tr>
             <td width="50%" style="text-align:left; vertical-align:top;">
+                <br>
                 Mengetahui,
-                 <br><br><br><br><br>
+                <br><br><br><br><br><br>
 
                 <b>{{ $pimpinan1->pengguna->nama }}</b><br>
                 Kaprog. Sarjana DKV UK Maranatha

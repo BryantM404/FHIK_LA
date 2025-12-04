@@ -31,7 +31,7 @@ class PenggunaSeeder extends Seeder
             ],
             [
                 'id' => 630057,
-                'nama' => 'Yudita Royandi Prawirodihardjo, S.T., S.Ds., M.Ds., HDII.',
+                'nama' => 'Yudita Royandi P, S.T., S.Ds., M.Ds., HDII.',
                 'password' => Hash::make('630057'),
                 'programStudi' => '63 - Desain Interior',
                 'role_id' => 3
@@ -89,20 +89,6 @@ class PenggunaSeeder extends Seeder
                 'nama' => 'Shinta Theresia Syam, SS',
                 'password' => Hash::make('810270'),
                 'role_id' => 2
-            ],
-            [
-                'id' => 2363025,
-                'nama' => 'FELIX TAN',
-                'password' => Hash::make('2363025'),
-                'programStudi' => '63 - Desain Interior',
-                'role_id' => 4
-            ],
-            [
-                'id' => 2364021,
-                'nama' => 'ABIGAIL YASTINE CHRISTY KONDA',
-                'password' => Hash::make('2364021'),
-                'programStudi' => '64 - Desain Komunikasi Visual',
-                'role_id' => 4
             ],
         ];
 

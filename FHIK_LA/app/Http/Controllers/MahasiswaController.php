@@ -13,6 +13,7 @@ use App\Models\SuratSKP;
 use App\Models\SuratSPTA;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MahasiswaController extends Controller
 {
@@ -102,6 +103,8 @@ class MahasiswaController extends Controller
             ]);
         });
 
+        notify()->success('Surat Keterangan Mahasiswa Aktif berhasil diajukan!','Sukses!');
+
         return redirect()->route('mahasiswaHistori');
     }
 
@@ -145,6 +148,7 @@ class MahasiswaController extends Controller
                 'pengguna_id' => $userId,
             ]);
         });
+        notify()->success('Surat Survei Kerja Praktek berhasil diajukan!','Sukses!');
 
         return redirect()->route('mahasiswaHistori');
     }
@@ -194,6 +198,7 @@ class MahasiswaController extends Controller
                 'pengguna_id' => $userId,
             ]);
         });
+        notify()->success('Surat Survei Penelitian Tugas Akhir berhasil diajukan!', 'Sukses');
 
         return redirect()->route('mahasiswaHistori');
     }

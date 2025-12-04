@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 class Pengguna extends Authenticatable
 {
@@ -48,5 +49,14 @@ class Pengguna extends Authenticatable
     public function getAuthIdentifierName()
     {
         return 'id';
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value) && !str_starts_with($value, '$2y$')) {
+            $this->attributes['password'] = Hash::make($value);
+        } else {
+            $this->attributes['password'] = $value;
+        }
     }
 }

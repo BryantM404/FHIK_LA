@@ -15,7 +15,6 @@ class PimpinanDetail extends Model
         'jabatan',
         'fakultas',
         'ttdPath',
-        'capPath',
         'pengguna_id'
     ];
     public $timestamps = false;

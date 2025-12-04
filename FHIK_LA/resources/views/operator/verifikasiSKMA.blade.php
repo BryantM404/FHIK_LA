@@ -64,7 +64,7 @@
                                                     <p>Nama Orang Tua / Wali: {{ $pengajuan->pengguna->mahasiswaDetail->namaWali }}</p>
                                                     <p>Alamat Orang Tua: {{ $pengajuan->pengguna->mahasiswaDetail->alamatOrangTua }}</p>
                                                     <p>Pekerjaan Orang Tua: {{ $pengajuan->pengguna->mahasiswaDetail->pekerjaanOrangTua }}</p>
-                                                    <p>Instansi: {{ $pengajuan->suratKMA->instansi ?: '-'}}'</p>
+                                                    <p>Instansi: {{ $pengajuan->suratKMA->instansi ?: '-'}}</p>
                                                     <p>Pangkat / Golongan: {{ $pengajuan->suratKMA->pangkatGolongan ?: '- / -' }}</p>
                                                     <p>Jabatan: {{ $pengajuan->suratKMA->jabatan ?: '-' }}</p>
                                                 </div>

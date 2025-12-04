@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Surat Keterangan Mahasiswa</title>
+    <title>Surat Keterangan Mahasiswa Aktif</title>
 
     <style>
         body {

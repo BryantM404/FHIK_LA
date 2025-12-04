@@ -5,6 +5,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\OperatorController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Pengajuan;
 use App\Models\Pengguna;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/pengguna/form-ubah-password', [UserController::class, 'formUbahPassword'])->name('formUbahPassword');
+    Route::post('/pengguna/ubah-password', [UserController::class, 'ubahPassword'])->name('ubahPassword');
 
     Route::middleware(['role:1'])->group(function (){
         Route::get('/admin/mahasiswa/sastra-inggris', [AdminController::class, 'mahasiswa41'])->name('viewMahasiswa41');

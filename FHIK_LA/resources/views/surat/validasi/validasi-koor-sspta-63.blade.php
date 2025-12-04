@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Surat Survei Kerja Praktik</title>
+    <title>Surat Survei Penelitian Tugas Akhir</title>
 
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 35px 45px;
             font-size: 12pt;
             line-height: 1.45;
@@ -17,25 +17,6 @@
             max-height: 110px;
             object-fit: contain;
             margin-top: -80px;
-        }
-
-        .judul {
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 5px;
-            font-size: 14pt;
-        }
-
-        .nomor {
-            text-align: left;
-            margin-top: 2px;
-        }
-
-        .perihal {
-            text-align: left;
-            margin-top: 2px;
-            margin-bottom: 25px;
         }
 
         table.data-table {
@@ -66,18 +47,28 @@
         <img src="{{ public_path('storage/material/kop/Kop Surat DI.png') }}">
     </div>
 
-    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
-    <div class="perihal">Perihal: Permohonan Izin Penelitian</div>
+    <table style="margin-top: 10px; margin-bottom: 25px; margin-left:-3px">
+        <tr>
+            <td style="width: 90px;">No</td>
+            <td style="width: 10px;">:</td>
+            <td>{{ $pengajuan->noSurat }}</td>
+        </tr>
+        <tr>
+            <td>Perihal</td>
+            <td>:</td>
+            <td>Surat Permohonan Izin Penelitian</td>
+        </tr>
+    </table>
 
     <b>Yth. Bapak/Ibu Pimpinan</b> <br>
     <b>{{ $suratSPTA['tempatPenelitian'] }}</b> <br>
     <b>{{ $suratSPTA['alamatPenelitian'] }}</b>
     
     <p>Dengan Hormat,</p>
-    <p>Bersama surat ini mahasiswa Program Studi Desain Interior Fakultas Humaniora dan Industri Kreatif, Universitas Kristen Maranatha yang beridentitas:</p>
+    <p style="text-align: justify; margin-top:-20px;">Bersama surat ini mahasiswa Program Studi Desain Interior Fakultas Humaniora dan Industri Kreatif, Universitas Kristen Maranatha yang beridentitas:</p>
 
 
-    <table class="data-table" style="margin-left:30px">
+    <table class="data-table" style="margin-left:30px; margin-bottom:-10px">
         <tr>
             <td>Nama</td>
             <td>:</td>
@@ -106,7 +97,7 @@
 
     </table>
 
-    <p>Akan Melakukan Pengumpulan data penelitian di :</p>
+    <p style="text-align: justify;">Akan Melakukan Pengumpulan data penelitian di :</p>
 
     <table class="data-table" style="margin-left:30px">
         <tr>
@@ -122,18 +113,18 @@
     </table>
 
 
-    <p>Mengajukan Permohonan izin untuk melakukan penelitian kiranya Bapak/Ibu dapat membantu mahasiswa kami dengan memberi izin untuk memfoto
-        , meminta data dan meminta denah di Instansi yang Bapak/Ibu pimpin guna menyelesaikan tugas mata kuliah {{ $suratSPTA['mataKuliah'] }}.
+    <p style="text-align: justify">Mengajukan Permohonan izin untuk melakukan penelitian kiranya Bapak/Ibu dapat membantu mahasiswa kami dengan memberi izin untuk memfoto, meminta data dan meminta denah di Instansi yang Bapak/Ibu pimpin guna menyelesaikan tugas mata kuliah {{ $suratSPTA['mataKuliah'] }}.
         Maka kami mohon perhatian serta bantuan sepenuhnya dari Bapak/Ibu, demi kelancaran tugas mahasiswa yang bersangkutan.
     </p>
 
-    <p class="content">
+    <p class="content" style="text-align: justify">
         Demikian Surat Keterangan ini kami sampaikan. Atas perhatian dan kerjasama Bapak/Ibu, kami ucapkan terimakasih.
     </p>
 
     <table width="100%" style="margin-top:30px;">
         <tr>
             <td width="50%" style="text-align:left; vertical-align:top;">
+                <br>
                 Mengetahui, <br>
                 Ketua Prodi. Desain Interior <br>
                 {{ $pimpinan1['fakultas'] }} <br>
@@ -144,13 +135,12 @@
             <td width="50%" style="text-align:left; vertical-align:top;">
                 Bandung, {{ $tanggalDisetujui }}<br>
                 Koordinator Tugas Akhir <br>
-                Program Studi Desain Interior <br>
+                Program Studi Desain Interior <br><br>
                 <img src="{{ public_path($pimpinan2['ttdPath']) }}" alt="TTD" style="width:180px;"><br>
                 <u>{{ $pimpinan2->pengguna->nama }}</u><br>
             </td>
         </tr>
     </table>
-
 
 </body>
 </html>

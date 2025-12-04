@@ -3,7 +3,20 @@
         <p style="color: black; font-weight: 500; font-size: 18px; margin: 0;">
             {{ Auth::user()->id }} / {{ Auth::user()->nama }} 
         </p>
-        <p style="padding-top:5px; color: black; font-size: 16px;">{{ Auth::user()->role->nama }}</p>
+        <p style="padding-top:5px; color: black; font-size: 16px;">
+            @if(Auth::user()->role_id == 2)
+                {{ Auth::user()->role->nama }}
+                @if(Auth::user()->programStudi == NULL)
+                    Fakultas
+                @else
+                    {{ Auth::user()->programStudi }}
+                @endif
+            @elseif(Auth::user()->role_id == 3)
+                {{ Auth::user()->pimpinanDetail->jabatan }}
+            @else
+                {{ Auth::user()->role->nama }}
+            @endif
+        </p>
     </div>
 
     <ul class="nav">

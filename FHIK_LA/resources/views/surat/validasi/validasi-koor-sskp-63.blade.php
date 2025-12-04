@@ -6,7 +6,7 @@
 
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 35px 45px;
             font-size: 12pt;
             line-height: 1.45;
@@ -17,25 +17,6 @@
             max-height: 110px;
             object-fit: contain;
             margin-top: -80px;
-        }
-
-        .judul {
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 5px;
-            font-size: 14pt;
-        }
-
-        .nomor, .perihal {
-            text-align: left;
-            margin-top: 2px;
-        }
-
-        .lampiran {
-            text-align: left;
-            margin-top: 2px;
-            margin-bottom: 25px;
         }
 
         table.data-table {
@@ -66,16 +47,30 @@
         <img src="{{ public_path('storage/material/kop/Kop Surat DI.png') }}">
     </div>
 
-    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
-    <div class="perihal">Perihal: Permohonan Memperoleh Izin Kerja Praktek - Pengantar MBKM Magang Mandiri</div>
-    <div class="lampiran">Lampiran: -</div>
+    <table style="margin-top: 10px; margin-bottom: 25px; margin-left:-3px">
+        <tr>
+            <td style="width: 90px;">No</td>
+            <td style="width: 10px;">:</td>
+            <td>{{ $pengajuan->noSurat }}</td>
+        </tr>
+        <tr>
+            <td>Perihal</td>
+            <td>:</td>
+            <td style="font-size: 14px">Permohonan Memperoleh Izin Kerja Praktek - Pengantar MBKM Magang Mandiri</td>
+        </tr>
+        <tr>
+            <td>Lampiran</td>
+            <td>:</td>
+            <td>-</td>
+        </tr>
+    </table>
 
     <b>Yth. Bapak/Ibu Pimpinan</b> <br>
     <b>{{ $suratSKP['tempatKP'] }}</b> <br>
     <b>{{ $suratSKP['alamatKP'] }}</b>
     
     <p>Dengan Hormat,</p>
-    <p>Sesuai dengan kurikulum Merdeka Belajar Kampus Merdeka yang berlaku saat ini pada Program Sarjana Desain Interior Fakultas Humaniora dan Industri Kreatif
+    <p style="text-align: justify">Sesuai dengan kurikulum Merdeka Belajar Kampus Merdeka yang berlaku saat ini pada Program Sarjana Desain Interior Fakultas Humaniora dan Industri Kreatif
         Universitas Kristen Maranatha, dengan ini mahasiswa kami tersebiut di bawah ini diwajibkan untuk menempuh kerja magang pada perusahaan selama 800 jam 
         (yang dilaksanakan secara onsite/WFO selama 15-20 minggu). Adapun materi yang diharapkan dari perusahaan Bapak/Ibu sebagai bekal pengalaman kerja bagi 
         mahasiswa adalah terlibat dalam proyek kompleksitas menengah ke atas (diharapkan proyek komersial atau non-residensial) yang meliputi pengalaman kerja berikut:
@@ -88,7 +83,7 @@
         <li>Trend desain & gaya hidup sesuai dengan proyek yang dikerjakan perusahaan</li>
     </ul>
 
-    <p>Selanjutnya di akhir masa magang kerja mahasiswa diwajibkan membuat laporan Kuliah Kerja Praktik. Sehubungan dengan hal tersebut di atas,
+    <p style="text-align: justify">Selanjutnya di akhir masa magang kerja mahasiswa diwajibkan membuat laporan Kuliah Kerja Praktik. Sehubungan dengan hal tersebut di atas,
         kami mohon bantuan Bapak/Ibu agar mengizinkan mahasiswa kami di bawah ini:
     </p>
 
@@ -111,7 +106,7 @@
     
     </table>
 
-    <p class="content">
+    <p class="content" style="text-align: justify">
         untuk memperoleh kesempatan praktik kerja, serta menghimpun data dan keterangan yang diperlukan. Selama proses berlangsungnya praktik kerja
         mahasiswa ybs. akan menjaga protokol kesehatan dan bersedia ditegur apabila tidak memenuhi protokol kesehatan yang berlaku di perushaan/institusi 
         Bapak/Ibu. Demikian Permohonan ini kami sampaikan. Atas perhatian dan kerjasama Bapak/Ibu, kami ucapkan terimakasih.
@@ -120,6 +115,7 @@
     <table width="100%" style="margin-top:30px;">
         <tr>
             <td width="50%" style="text-align:left; vertical-align:top;">
+                <br>
                 Mengetahui, <br>
                 Ketua Program Studi Desain Interior <br>
                 {{ $pimpinan1['fakultas'] }} <br><br><br><br><br>
@@ -130,7 +126,7 @@
                 Bandung, {{ $tanggalDisetujui }}<br>
                 Koordinator Kerja Praktek <br>
                 Program Studi Desain Interior <br>
-                <img src="{{ public_path($pimpinan2['ttdPath']) }}" alt="TTD" style="width:180px;"><br>
+                <img src="{{ public_path($pimpinan2['ttdPath']) }}" alt="TTD" style="width:240px; margin-bottom:5px"><br>
                 <u>{{ $pimpinan2->pengguna->nama }}</u>
             </td>
         </tr>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Surat Survei Kerja Praktik</title>
+    <title>Surat Survei Penelitian Tugas Akhir</title>
 
     <style>
         body {
@@ -17,25 +17,6 @@
             max-height: 110px;
             object-fit: contain;
             margin-top: -80px;
-        }
-
-        .judul {
-            text-align: center;
-            font-weight: bold;
-            text-decoration: underline;
-            margin-top: 5px;
-            font-size: 14pt;
-        }
-
-        .nomor, .lampiran {
-            text-align: left;
-            margin-top: 2px;
-        }
-
-        .perihal {
-            text-align: left;
-            margin-top: 2px;
-            margin-bottom: 20px;
         }
 
         table.data-table {
@@ -63,19 +44,33 @@
 <body>
 
     <div class="kop">
-        <img src="{{ public_path('storage/material/kop/Kop Surat DI.png') }}">
+        <img src="{{ public_path('storage/material/kop/Kop Surat DKV.png') }}">
     </div>
 
-    <div class="nomor">No: {{ $pengajuan['noSurat'] }}</div>
-    <div class="lampiran">Lampiran: -</div>
-    <div class="perihal">Perihal: Surat Pengantar Survey</div>
+    <table style="margin-top: 10px; margin-bottom: 25px; margin-left:-3px">
+        <tr>
+            <td style="width: 90px;">No</td>
+            <td style="width: 10px;">:</td>
+            <td>{{ $pengajuan->noSurat }}</td>
+        </tr>
+        <tr>
+            <td>Lampiran</td>
+            <td>:</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td>Perihal</td>
+            <td>:</td>
+            <td>Surat Pengantar Survey</td>
+        </tr>
+    </table>
 
     <b>Kepada yth.</b> <br>
     <b>{{ $suratSPTA['tempatPenelitian'] }}</b> <br>
     <b>{{ $suratSPTA['alamatPenelitian'] }}</b>
     
     <p>Dengan Hormat,</p>
-    <p>Melalui surat ini, kami memohon agar mahasiswa program sarjana Desain Komunikasi Visual Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha di bawah ini:
+    <p style="text-align: justify">Melalui surat ini, kami memohon agar mahasiswa program sarjana Desain Komunikasi Visual Fakultas Humaniora dan Industri Kreatif Universitas Kristen Maranatha di bawah ini:
     </p>
 
     <table width="100%" cellspacing="0" cellpadding="6" style="border:1px solid #000; border-collapse:collapse;">
@@ -93,23 +88,24 @@
         </tr>
     </table>
     
-    <p>Diijinkan untuk melakukan survey untuk Foto Tempat, Meminta Data, Meminta Denah, Wawancara, Tour Lokasi dan dokumentasi video di Lembaga Bapak/Ibu. Survey ini dilakukan
+    <p style="text-align: justify"> Diijinkan untuk melakukan survey untuk Foto Tempat, Meminta Data, Meminta Denah, Wawancara, Tour Lokasi dan dokumentasi video di Lembaga Bapak/Ibu. Survey ini dilakukan
         untuk keperluan Tugas Akhir Mata Kuliah {{ $suratSPTA['mataKuliah'] }} pada Program Sarjana Desain Komunikasi Visual Fakultas Humaniora dan Industri Kreatif Universitas
         Kristen Maranatha, dengan topik <b>"{{ $suratSPTA['judulTugas'] }}."</b>
     </p>
-    <p>Mahasiswa yang bersangkutan akan menjaga protokol kesehatan selama proses survey dan bersedia ditegur bila tidak memenuhi protokol yang berlaku di tempat Bapak/Ibu.
+    <p style="text-align: justify">Mahasiswa yang bersangkutan akan menjaga protokol kesehatan selama proses survey dan bersedia ditegur bila tidak memenuhi protokol yang berlaku di tempat Bapak/Ibu.
     </p>
     <p>Atas bantuannya, kami ucapkan terima kasih</p>
 
     <table width="100%" style="margin-top:30px;">
         <tr>
             <td width="50%" style="text-align:left; vertical-align:top;">
+                <br>
                 Mengetahui,<br>
                 Kaprodi Desain Komunikasi Visual <br>
                 {{ $pimpinan1['fakultas'] }}
                  <br><br><br><br><br>
 
-                <b>{{ $pimpinan1->pengguna->nama }}</b><br>
+                <b style="margin-bottom:-5px;">{{ $pimpinan1->pengguna->nama }}</b><br>
             </td>
             <td width="50%" style="text-align:left; vertical-align:top;">
                 Bandung, {{ $tanggalDisetujui }}<br>
